@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5p [%c{3}]: %m%n" />
+		</Console>
+		<File name="DebugFile" fileName="/var/log/containers/openshift-logtest-debug.log">
+			<PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5p [%c{3}]: %m%n" />
+		</File>
+		<File name="InfoFile" fileName="/var/log/containers/openshift-logtest-info.log">
+			<PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5p [%c{3}]: %m%n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.capgemini.test.openshiftlogging.service.debug" level="DEBUG"
+			additivity="false">
+			<AppenderRef ref="DebugFile" />
+		</Logger>
+		<Logger name="com.capgemini.test.openshiftlogging.service.info" level="INFO"
+			additivity="false">
+			<AppenderRef ref="InfoFile" />
+		</Logger>
+		<Logger name="com.capgemini.test.openshiftlogging" level="INFO"/>
+
+
+		<Root level="WARN">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
